@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- 
+      CSP ATUALIZADA: Permite carregar fontes e scripts do unpkg.com, necessário para os ícones.
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline'; font-src 'self' https://unpkg.com;">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href ='index.css' type="text/css" rel = "stylesheet"> <!-- Mudei para menu.css para clareza -->
+    <title>Menu Principal</title>
+
+    <!-- Adiciona a biblioteca de ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <main class="container">
+        <header class="app-header">
+            <!-- Ícone adicionado ao lado do título -->
+            <i data-lucide="layout-dashboard"></i>
+            <h1>GymControl</h1>
+            <p>Selecione uma opção para começar</p>
+        </header>
+
+        <nav class="main-menu">
+            <!-- Os botões agora têm classes e ícones -->
+            <button class="menu-button" onclick="window.janelaGymAPI.abrirAgendamento()">
+                <i data-lucide="calendar-days"></i>
+                <span>Agendamentos</span>
+            </button> 
+            
+            <button class="menu-button" onclick="window.janelaGymAPI.abrirCliente()">
+                <i data-lucide="users"></i>
+                <span>Clientes</span>
+            </button>
+        </nav>
+    </main>
+
+    <footer>
+        Gerenciador v1.0.0
+    </footer>
+
+    <!-- Script para ativar os ícones -->
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>

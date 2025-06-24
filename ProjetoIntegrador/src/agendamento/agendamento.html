@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="agendamento.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/libs/choices/choices.min.css" />
+    <title>Lista de Agendamentos</title>
+</head>
+
+<body>
+    <div class="controls-container">
+        <!-- Ícones definidos diretamente no HTML -->
+        <button id="btn-limparFiltro" title="Limpar Filtro"><i data-lucide="rotate-cw"></i></button>
+        <select id="filtro" aria-placeholder="Filtrar os tipos de agendamentos">
+            <option value="0">Todos os tipos</option>
+            <option value="Aula de Musculação">Aula de Musculação</option>
+            <option value="Consulta Nutricional">Consulta Nutricional</option>
+            <option value="Avaliação Física">Avaliação Física</option>
+            <option value="Aula de Zumba">Aula de Zumba</option>
+        </select>
+        <button id="btnFiltro" title="Aplicar Filtro"><i data-lucide="filter"></i></button>
+    </div>
+
+    <table id="AgendamentoTable">
+        <thead>
+            <tr>
+                <th>Cliente</th><th>Funcionário</th><th>Data Marcada</th><th>Tipo de Atendimento</th><th>Editar</th>
+            </tr>
+        </thead>
+        <tbody id="AgendamentosTableDados"></tbody>
+    </table>
+
+    <div id="modal">  
+         <button id='btn-limparDados' title="Limpar dados do formulário"><i data-lucide="brush"></i></button>
+        <h3>Edite os dados do Agendamento:</h3>
+     
+        <label>ID: <input type="text" id="Agendamento-id" readonly /></label><br>
+        <label for="cliente-nome">Cliente:</label>
+        <select id="cliente-nome"></select><br>
+        <label for="funcionario-nome">Funcionário:</label>
+        <select id="funcionario-nome"></select><br>
+        <label for="data">Data:</label>
+        <div class="date-input-wrapper"><input id="data" type="date"></div><br>
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" placeholder="Tipo">
+            <option value="Aula de Musculação">Aula de Musculação</option>
+            <option value="Consulta Nutricional">Consulta Nutricional</option>
+            <option value="Avaliação Física">Avaliação Física</option>
+            <option value="Aula de Zumba">Aula de Zumba</option>
+        </select><br>
+        <button id="btn-salvar"><i data-lucide="save"></i></button>
+        <button id="btn-excluir"><i data-lucide="trash-2"></i></button>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../assets/libs/choices/choices.min.js"></script>
+    <script src="agendamento.js"></script>
+</body>
+
+</html>

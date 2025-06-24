@@ -1,0 +1,290 @@
+:root {
+    --bg-deep-space: #121822;
+    --bg-ui-element: #1B263B;
+    --border-color: #415A77;
+    --text-primary: #EAEAEA;
+    --text-secondary: #778DA9;
+    --accent-electric-blue: #4A90E2;
+    --accent-danger-red: #E53E3E;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-deep-space);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.controls-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 1000px;
+    padding: 10px;
+    background-color: var(--bg-ui-element);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+}
+
+.controls-container button, #btn-limparDados {
+    background: none;
+    border: 2px solid var(--accent-electric-blue);
+    color: var(--accent-electric-blue);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.controls-container button:hover, #btn-limparDados:hover {
+    background-color: var(--accent-electric-blue);
+    color: white;
+}
+
+.controls-container #filtro {
+    flex-grow: 1;
+    background-color: var(--bg-deep-space);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#AgendamentoTable {
+    width: 80%;
+    max-width: 1000px;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: var(--bg-ui-element);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#AgendamentoTable th, #AgendamentoTable td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#AgendamentoTable th {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#AgendamentoTable tbody tr:hover {
+    background-color: var(--border-color);
+    transform: scale(1.02);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+#AgendamentoTable td button {
+    background: none;
+    border: none;
+    color: var(--accent-electric-blue);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#AgendamentoTable td button:hover {
+    color: white;
+}
+
+#AgendamentoTable th:last-child, #AgendamentoTable td:last-child {
+    text-align: center;
+}
+
+#modal {
+    background-color: var(--bg-ui-element);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(74, 144, 226, 0.2);
+    width: 80%;
+    max-width: 500px;
+    border: 1px solid var(--accent-electric-blue);
+}
+
+#modal h3 {
+    color: var(--accent-electric-blue);
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#modal label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+#modal input[type="text"], #modal select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-deep-space);
+    color: var(--text-primary);
+}
+
+#modal input:focus, #modal select:focus {
+    outline: none;
+    border-color: var(--accent-electric-blue);
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+}
+
+#btn-salvar, #btn-excluir {
+    width: calc(50% - 10px);
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+#btn-salvar {
+    background-color: var(--accent-electric-blue);
+    color: white;
+    border: none;
+}
+
+#btn-salvar:hover { opacity: 0.9; }
+
+#btn-excluir {
+    background-color: transparent;
+    color: var(--accent-danger-red);
+    border: 2px solid var(--accent-danger-red);
+}
+
+#btn-excluir:hover {
+    background-color: var(--accent-danger-red);
+    color: white;
+}
+
+.date-input-wrapper { margin-top: 5px; }
+
+#modal input[type="date"] {
+    color-scheme: dark;
+    appearance: auto;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-deep-space);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1em;
+}
+
+#modal input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(58%) sepia(87%) saturate(542%) hue-rotate(172deg) brightness(92%) contrast(87%);
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+#modal input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(58%) sepia(87%) saturate(542%) hue-rotate(172deg) brightness(120%) contrast(90%);
+}
+
+#modal input[type="date"]:focus {
+    outline: none;
+    border-color: var(--accent-electric-blue);
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+}
+
+.lucide { width: 20px; height: 20px; stroke-width: 2; }
+
+/* --- ADICIONE ESTE NOVO BLOCO AO FINAL DO SEU CSS --- */
+
+/* --- Estilização para Choices.js com Alta Especificidade --- */
+
+/* O container principal do dropdown, dentro do modal */
+#modal .choices {
+    margin-top: 5px;
+    margin-bottom: 24px;
+  }
+  
+  /* A caixa que parece um input, dentro do modal */
+  #modal .choices__inner {
+    background-color: var(--bg-deep-space);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 7.5px 7.5px 3.75px;
+    min-height: 44px;
+    border-radius: 5px;
+    transition: border-color 0.2s;
+  }
+  
+  /* Estilo do container quando o dropdown está aberto, dentro do modal */
+  #modal .choices[data-type*="select-one"].is-open .choices__inner {
+    border-radius: 5px 5px 0 0;
+    border-color: var(--accent-electric-blue);
+  }
+  
+  /* Cor do texto do item selecionado, dentro do modal */
+  #modal .choices__list--single .choices__item {
+      color: var(--text-primary);
+  }
+  
+  /* A lista de opções que aparece, dentro do modal */
+  #modal .choices__list--dropdown, 
+  #modal .choices__list[aria-expanded] {
+    background-color: var(--bg-ui-element);
+    border: 1px solid var(--accent-electric-blue);
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+  }
+  
+  /* Estilo de cada item na lista, dentro do modal */
+  #modal .choices__item--choice {
+    color: var(--text-primary);
+    padding: 10px;
+  }
+  
+  /* Estilo do item da lista em hover (highlight), dentro do modal */
+  #modal .choices__item--choice.is-highlighted {
+    background-color: var(--accent-electric-blue);
+    color: var(--bg-deep-space);
+  }
+  
+  /* Cor do placeholder, dentro do modal */
+  #modal .choices__list--single .choices__placeholder {
+      color: var(--text-secondary);
+  }
+  
+  /* Campo de busca, dentro do modal */
+  #modal .choices__input {
+      background-color: var(--bg-deep-space);
+      color: var(--text-primary);
+      border: none;
+      padding: 10px;
+  }
+  
+  /* Botão de remover seleção 'x', dentro do modal */
+  #modal .choices__button {
+    filter: invert(80%);
+    transition: filter 0.2s;
+    margin-right: 5px;
+  }
+  
+  #modal .choices__button:hover {
+    filter: invert(60%) sepia(100%) saturate(600%) hue-rotate(170deg);
+  }

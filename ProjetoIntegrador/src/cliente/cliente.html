@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='cliente.css' type="text/css" rel="stylesheet">
+    <title>Lista de Clientes</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <table id="clientesTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Plano</th>
+                <th>Número</th>
+                <th>Email</th>
+                <th>Data de Nascimento</th> </tr>
+        </thead>
+        <tbody id="clienteTableDados">
+        </tbody>
+    </table>
+
+    <div id="modal">
+        <h3>Edite os dados do Cliente:</h3>
+        <button id='btn-limpar'>
+            <icon id="iLimpar"></icon>
+        </button>
+        <label>ID: <input type="text" id="cliente-id" readonly />
+        </label>
+        <br>
+        <label>Nome: <input type="text" id="cliente-nome">
+        </label>
+        <br>
+        <label>CPF: <input type="text" id="cliente-cpf">
+        </label>
+        <br>
+        <label>Data de Nascimento: <input type="date" id="cliente-nascimento">
+        </label>
+        <br>
+        <label>Plano:
+            <select id="cliente-plano">
+            </select>
+        </label>
+        <br>
+        <label>Numero: <input type="text" id="cliente-numero">
+        </label>
+        <br>
+        <label>Email: <input type="text" id="cliente-email">
+        </label>
+        <br>
+        <button id="btn-salvar">
+            <icon id='iSalvar'></icon>
+        </button>
+        <button id="btn-excluir">
+            <icon id='iExcluir'></icon>
+        </button>
+    </div>
+
+    <script src="cliente.js"></script>
+</body>
+
+</html>

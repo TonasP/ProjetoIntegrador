@@ -1,0 +1,23 @@
+{
+  "name": "14052025",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set NODE_ENV=development && electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "choices.js": "^11.1.0",
+    "electron-reload": "^2.0.0-alpha.1",
+    "git": "^0.1.5",
+    "lucide": "^0.511.0",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "electron": "^36.2.0"
+  },
+  "description": ""
+}

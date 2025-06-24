@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="login.css" type="text/css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>GymControl - Acesso</title>
+</head>
+<body>
+
+    <div class="login-container">
+        <header class="app-header">
+            <i data-lucide="shield-check"></i>
+            <h1>Acesso Seguro</h1>
+            <p>Bem-vindo ao GymControl</p>
+        </header>
+
+        <form class="login-form">
+            <div class="input-group">
+                <i data-lucide="user"></i>
+                <input id="login" type="text" placeholder="Login de usuário" required/>
+            </div>
+            
+            <div class="input-group">
+                <i data-lucide="lock"></i>
+                <input id="senha" type="password" placeholder="Senha" required/>
+            </div>
+            
+            <button id="acessar" type="button" class="login-button">
+                Acessar Plataforma
+                <i data-lucide="arrow-right"></i>
+            </button>
+            
+            <p id="msg" class="status-message"></p>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 GymControl. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script src="login.js"></script>
+    
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
