@@ -147,6 +147,9 @@ function abrirMenuUser(){
 function fecharLogin(){
     ipcRenderer.send('fechar-login')
 }
+function voltarJanelaLogin(){
+    ipcRenderer.send('voltar-janela-login')
+}
 contextBridge.exposeInMainWorld('janelaGymAPI',
     {
         
@@ -156,5 +159,6 @@ contextBridge.exposeInMainWorld('janelaGymAPI',
         abrirMenuUser,
     //-----------------------------------------------------
         fecharLogin,
+        voltarJanelaLogin,
         
     })

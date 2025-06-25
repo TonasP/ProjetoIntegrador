@@ -62,6 +62,8 @@ function registrarJanelas() {
     ipcMain.on('abrir-cliente', janelas.modalAbrirClientes)
     ipcMain.on('abrir-menu-principal', createMainWindow)
     ipcMain.on('abrir-janela-user', janelaPrincipal.createMainWindowUser)
+    ipcMain.on('voltar-janela-login',janelaPrincipal.getJanelaLogin)    
+    
 }
 function fecharJanelas(){
     ipcMain.on('fechar-login', janelaPrincipal.closeLoginWindow)

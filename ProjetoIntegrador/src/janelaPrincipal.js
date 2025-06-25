@@ -74,10 +74,14 @@ function createLoginWindow() {
   janelaLogin.loadFile(caminhoDoArquivo);
  
 }
+function getJanelaLogin(){
+  return janelaLogin
+}
 
 module.exports = {
   closeLoginWindow,
   getJanelaPrincipal,
+  getJanelaLogin,
   createMainWindow,
   createLoginWindow,
   createMainWindowUser,

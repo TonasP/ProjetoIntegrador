@@ -18,8 +18,6 @@ async function validarLogin() {
     msg.textContent = '';
     msg.className = 'status-message';
     loginContainer.classList.remove('shake-error');
-    btnAcessar.disabled = true;
-    btnAcessar.textContent = 'Verificando...';
 
     try {
 
@@ -30,7 +28,8 @@ async function validarLogin() {
             msg.textContent = "Acesso concedido!";
             msg.classList.add('success');
 
-            validarUsuario()
+            await validarUsuario()
+            window.janelaGymAPI.fecharLogin()
 
 
         } else {
