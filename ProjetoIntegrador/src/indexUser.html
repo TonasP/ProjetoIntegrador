@@ -2,37 +2,36 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-
-    <!-- 
-      CSP ATUALIZADA: Permite carregar fontes e scripts do unpkg.com, necessário para os ícones.
-    -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline'; font-src 'self' https://unpkg.com;">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href ='index.css' type="text/css" rel = "stylesheet"> <!-- Mudei para menu.css para clareza -->
+    <link href ='indexUser.css' type="text/css" rel = "stylesheet">
     <title>Menu Principal</title>
-
-    <!-- Adiciona a biblioteca de ícones Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
+    <!--
+      >>> ALTERAÇÃO PRINCIPAL <<<
+      A mensagem de boas-vindas agora está fora e acima do container principal.
+    -->
+    <div class="user-welcome">
+        <p>Bem-vindo, <span id="username"></span>!</p>
+    </div>
+
     <main class="container">
         <header class="app-header">
-            <!-- Ícone adicionado ao lado do título -->
             <i data-lucide="layout-dashboard"></i>
             <h1>GymControl</h1>
             <p>Selecione uma opção para começar</p>
         </header>
 
+        <!-- A div 'user-welcome' foi removida daqui. -->
+
         <nav class="main-menu">
-            <!-- Os botões agora têm classes e ícones -->
             <button class="menu-button" onclick="window.janelaGymAPI.abrirAgendamento()">
                 <i data-lucide="calendar-days"></i>
                 <span>Agendamentos</span>
             </button> 
-            
-            </button>
         </nav>
     </main>
 
@@ -40,9 +39,19 @@
         Gerenciador v1.0.0
     </footer>
 
-    <!-- Script para ativar os ícones -->
+    <!-- O Script permanece o mesmo, mas agora ele vai popular o nome no novo local. -->
     <script>
-      lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            const nomeSalvo = localStorage.getItem('nome');
+            const welcomeContainer = document.querySelector('.user-welcome');
+            
+            if (nomeSalvo) {
+                document.getElementById('username').textContent = nomeSalvo;
+                welcomeContainer.style.display = 'block'; // Alterado para 'block'
+            }
+
+            lucide.createIcons();
+        });
     </script>
 </body>
 </html>

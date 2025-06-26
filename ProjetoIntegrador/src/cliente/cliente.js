@@ -15,7 +15,11 @@ const botaoLimpar = document.getElementById('btn-limpar');
 botaoLimpar.addEventListener('click', limparDados);
 botaoSalvar.addEventListener('click', funcaoSalvar)
 botaoExcluir.addEventListener('click', excluirCliente)
+const validacaoPerfil = localStorage.get('perfil')
 
+if (validacaoPerfil === 'user'){
+    botaoExcluir.disable
+}
 // ALTERAÇÃO: Adicionado 'dataNascimento' à função e à lógica
 function mostrarDetalhes(id, nome, cpf, plano_id, numero, email, dataNascimento) {
     modalIDCliente.value = id

@@ -1,4 +1,4 @@
-// agendamento.js (Versão Final com Correção dos Ícones)
+
 
 let tabelaAgendamentos, modal, modalIDAgendamento;
 let botaoExcluir, botaoSalvar, botaoLimparDados, botaoFiltrar, botaoLimparFiltro;
@@ -6,8 +6,10 @@ let dropdownClienteEl, dropdownFuncionarioEl, dropdownData, dropdownTipo, dropdo
 let choicesCliente = null;
 let choicesFuncionario = null;
 
-document.addEventListener('DOMContentLoaded', init);
+let validacaoPerfil = localStorage.getItem('perfil')
 
+
+document.addEventListener('DOMContentLoaded', init);
 async function init() {
     tabelaAgendamentos = document.getElementById('AgendamentosTableDados');
     modal = document.getElementById('modal');
@@ -32,6 +34,13 @@ async function init() {
     botaoExcluir.addEventListener('click', excluirAgendamento);
     botaoFiltrar.addEventListener('click', filtrarAgendamentos);
     botaoLimparFiltro.addEventListener('click', limparFiltro);
+
+    if (validacaoPerfil === 'user'){
+    botaoExcluir.disabled = true;
+    botaoExcluir.style.opacity = '0.4';
+    botaoExcluir.style.cursor = 'not-allowed'
+    botaoExcluir.title = "Você não tem permissão para excluir."
+}
     
     const choicesConfig = {
         searchEnabled: true,

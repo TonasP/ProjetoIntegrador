@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='funcionario.css' type="text/css" rel="stylesheet">
+    <title>Lista de funcionarios</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <table id="funcionariosTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Função</th>
+                <th>Número</th>
+                <th>Email</th>
+                <th>Data de Nascimento</th> </tr>
+        </thead>
+        <tbody id="funcionarioTableDados">
+        </tbody>
+    </table>
+
+    <div id="modal">
+        <h3>Edite os dados do funcionario:</h3>
+        <button id='btn-limpar'>
+            <icon id="iLimpar"></icon>
+        </button>
+        <label>ID: <input type="text" id="funcionario-id" readonly />
+        </label>
+        <br>
+        <label>Nome: <input type="text" id="funcionario-nome">
+        </label>
+        <br>
+        <label>CPF: <input type="text" id="funcionario-cpf">
+        </label>
+        <br>
+        <label>Data de Nascimento: <input type="date" id="funcionario-nascimento">
+        </label>
+        <br>
+        <label>Função:
+            <select id="funcionario-funcao">
+            </select>
+        </label>
+        <br>
+        <label>Numero: <input type="text" id="funcionario-numero">
+        </label>
+        <br>
+        <label>Email: <input type="text" id="funcionario-email">
+        </label>
+        <br>
+        <button id="btn-salvar">
+            <icon id='iSalvar'></icon>
+        </button>
+        <button id="btn-excluir">
+            <icon id='iExcluir'></icon>
+        </button>
+    </div>
+
+    <script src="funcionario.js"></script>
+</body>
+
+</html>

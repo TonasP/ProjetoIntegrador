@@ -116,3 +116,61 @@ footer {
     font-size: 0.9em;
     opacity: 0.6;
 }
+/* --- Seção de Boas-Vindas ao Usuário (VERSÃO PREMIUM) --- */
+
+.user-welcome {
+    width: 100%;
+    text-align: center;
+    
+    /* Aumenta o espaço para dar mais respiro e hierarquia */
+    margin-bottom: 40px; 
+    
+    /* Começa escondido e só aparece se houver um nome */
+    display: none; 
+    
+    /* Animação suave para surgir de cima para baixo */
+    animation: fadeInDown 0.8s 0.2s ease-out forwards;
+    opacity: 0;
+}
+
+/* Animação (a mesma de antes, mas com tempo ajustado) */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Estilo para o parágrafo geral da saudação */
+.user-welcome p {
+    margin: 0;
+    /* >> TAMANHO SIGNIFICATIVAMENTE MAIOR << */
+    font-size: 2.2em; 
+    /* Usamos uma fonte mais leve para o "Bem-vindo," */
+    font-weight: 300; 
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    /* Sombra sutil para dar profundidade e destacar do fundo */
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25); 
+}
+
+/* >> EFEITO DE IMPORTÂNCIA PARA O NOME << */
+.user-welcome #username {
+    /* Deixamos o nome bem mais forte para dar destaque */
+    font-weight: 700; 
+    
+    /* Efeito de gradiente no texto para um visual premium e moderno.
+       O texto vai de um azul claro para branco. */
+    background: linear-gradient(45deg, var(--accent-electric-blue), #EAEAEA);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Para navegadores que não suportam o gradiente, ele usará a cor de destaque. */
+    color: var(--accent-electric-blue); 
+}

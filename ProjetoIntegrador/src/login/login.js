@@ -27,8 +27,9 @@ async function validarLogin() {
 
             msg.textContent = "Acesso concedido!";
             msg.classList.add('success');
-
+         
             await validarUsuario()
+           
             window.janelaGymAPI.fecharLogin()
 
 
@@ -54,9 +55,12 @@ async function validarUsuario() {
     const validar = await window.GymAPI.validarPerfil(loginInput.value, senhaInput.value)
     console.log(validar[0].perfil)
     if (validar[0].perfil == 'adm') {
+        localStorage.setItem('perfil', validar[0].perfil)
+        localStorage.setItem('nome', validar[0].nome_cliente)
         window.janelaGymAPI.abrirMenuPrincipal();
         return
     } else {
+        localStorage.setItem('perfil', validar[0].perfil)
         window.janelaGymAPI.abrirMenuUser()
         return
 
