@@ -16,7 +16,7 @@ async function deletarFuncionario(event,FuncionarioId){
 }
 async function alterarFuncionario(event, Funcionarioid, FuncionarioNome, FuncionarioCpf, data_nascimento, funcao, numero_celular, email) {
     event =''
-    const resultado2 = await db.query(`UPDATE "GymControl".Funcionarios
+    const resultado2 = await db.query(`UPDATE "GymControl".Funcionarios set
     nome=$1, cpf=$2, data_nascimento=$3, funcao=$4, numero_celular=$5, email=$6
     WHERE id = $7;`, [FuncionarioNome, FuncionarioCpf, data_nascimento, funcao, numero_celular, email, Funcionarioid]);
     return resultado2.rows;

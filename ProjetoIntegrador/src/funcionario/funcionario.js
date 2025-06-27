@@ -1,13 +1,13 @@
-const tabelaFuncionario = document.getElementById('FuncionarioTableDados');
+const tabelaFuncionario = document.getElementById('funcionarioTableDados');
 
 // ALTERAÇÃO: Adicionada referência para o novo campo de data
-const modalNascimentoFuncionario = document.getElementById('Funcionario-nascimento');
-const modalNomeFuncionario = document.getElementById('Funcionario-nome');
-const modalCpfFuncionario = document.getElementById('Funcionario-cpf');
-const modalIDFuncionario = document.getElementById('Funcionario-id');
-const modalPlanoFuncionario = document.getElementById('Funcionario-funcao');
-const modalNumeroFuncionario = document.getElementById("Funcionario-numero");
-const modalEmailFuncionario = document.getElementById('Funcionario-email')
+const modalNascimentoFuncionario = document.getElementById('funcionario-nascimento');
+const modalNomeFuncionario = document.getElementById('funcionario-nome');
+const modalCpfFuncionario = document.getElementById('funcionario-cpf');
+const modalIDFuncionario = document.getElementById('funcionario-id');
+const modalFuncaoFuncionario = document.getElementById('funcionario-funcao');
+const modalNumeroFuncionario = document.getElementById("funcionario-numero");
+const modalEmailFuncionario = document.getElementById('funcionario-email')
 
 const botaoExcluir = document.getElementById('btn-excluir');
 const botaoSalvar = document.getElementById('btn-salvar');
@@ -15,17 +15,17 @@ const botaoLimpar = document.getElementById('btn-limpar');
 botaoLimpar.addEventListener('click', limparDados);
 botaoSalvar.addEventListener('click', funcaoSalvar)
 botaoExcluir.addEventListener('click', excluirFuncionario)
-const validacaoPerfil = localStorage.get('perfil')
+const validacaoPerfil = localStorage.getItem('perfil')
 
 if (validacaoPerfil === 'user'){
     botaoExcluir.disable
 }
 // ALTERAÇÃO: Adicionado 'dataNascimento' à função e à lógica
-function mostrarDetalhes(id, nome, cpf, plano_id, numero, email, dataNascimento) {
+function mostrarDetalhes(id, nome, cpf, funcao, numero, email, dataNascimento) {
     modalIDFuncionario.value = id
     modalNomeFuncionario.value = nome
     modalCpfFuncionario.value = cpf
-    modalPlanoFuncionario.value = plano_id
+    modalFuncaoFuncionario.value = funcao
     modalNumeroFuncionario.value = numero
     modalEmailFuncionario.value = email
 
@@ -44,17 +44,17 @@ function limparDados() {
 async function funcaoSalvar() {
     const FuncionarioNome = modalNomeFuncionario.value
     const FuncionarioCpf = modalCpfFuncionario.value
-    const FuncionarioPlano = modalPlanoFuncionario.value
+    const FuncionarioFuncao = modalFuncaoFuncionario.value
     const FuncionarioNumero = modalNumeroFuncionario.value
     const FuncionarioEmail = modalEmailFuncionario.value
     const FuncionarioNascimento = modalNascimentoFuncionario.value
 
     if (modalIDFuncionario.value === '') {
-        if (FuncionarioNome === '' || FuncionarioCpf === '' || FuncionarioPlano === '' || FuncionarioNascimento === '') {
+        if (FuncionarioNome === '' || FuncionarioCpf === '' || FuncionarioFuncao === '' || FuncionarioNascimento === '') {
             alert("Preencha todos os dados")
             return
         }
-        await window.GymAPI.salvarFuncionario(FuncionarioNome, FuncionarioCpf, FuncionarioNascimento, FuncionarioPlano, FuncionarioNumero, FuncionarioEmail)
+        await window.GymAPI.salvarFuncionario(FuncionarioNome, FuncionarioCpf, FuncionarioNascimento, FuncionarioFuncao, FuncionarioNumero, FuncionarioEmail)
         carregarFuncionarios();
         limparDados()
         return
@@ -70,13 +70,13 @@ async function alterarFuncionario() {
     const FuncionarioId = modalIDFuncionario.value
     const FuncionarioNome = modalNomeFuncionario.value
     const FuncionarioCpf = modalCpfFuncionario.value
-    const FuncionarioPlano = modalPlanoFuncionario.value
+    const FuncionarioFuncao = modalFuncaoFuncionario.value
     const FuncionarioNumero = modalNumeroFuncionario.value
     const FuncionarioEmail = modalEmailFuncionario.value
     const FuncionarioNascimento = modalNascimentoFuncionario.value
 
    
-    const retorno = await window.GymAPI.alterarFuncionario(FuncionarioNome, FuncionarioCpf, FuncionarioNascimento, FuncionarioPlano, FuncionarioNumero, FuncionarioEmail, FuncionarioId);
+    const retorno = await window.GymAPI.alterarFuncionario(FuncionarioId, FuncionarioNome, FuncionarioCpf, FuncionarioNascimento, FuncionarioFuncao, FuncionarioNumero, FuncionarioEmail);
 
     carregarFuncionarios();
     limparDados()
@@ -111,13 +111,13 @@ function criarLinhaFuncionario(Funcionario) {
     celulaCpf.textContent = Funcionario.cpf;
     linha.appendChild(celulaCpf);
 
-    const celulaPlano = document.createElement("td")
+    const celulaFuncao = document.createElement("td")
     // Assumindo que a API precisa fazer um JOIN para buscar o nome do funcao
-    celulaPlano.textContent = Funcionario.funcao// Use a propriedade correta (ex: 'plano_nome')
-    linha.appendChild(celulaPlano)
+    celulaFuncao.textContent = Funcionario.funcao// Use a propriedade correta (ex: 'Funcao_nome')
+    linha.appendChild(celulaFuncao)
 
     const celulaNumero = document.createElement("td")
-    celulaNumero.textContent = Funcionario.numero
+    celulaNumero.textContent = Funcionario.numero_celular
     linha.appendChild(celulaNumero)
 
     const celulaEmail = document.createElement("td")
@@ -135,7 +135,7 @@ function criarLinhaFuncionario(Funcionario) {
     botao.addEventListener("click",
         // ALTERAÇÃO: Passa o Funcionario.data_nascimento para a função
         function () {
-            mostrarDetalhes(Funcionario.id, Funcionario.nome, Funcionario.cpf, Funcionario.plano_id, Funcionario.numero, Funcionario.email, Funcionario.data_nascimento)
+            mostrarDetalhes(Funcionario.id, Funcionario.nome, Funcionario.cpf, Funcionario.funcao, Funcionario.numero_celular, Funcionario.email, Funcionario.data_nascimento)
         }
     );
 

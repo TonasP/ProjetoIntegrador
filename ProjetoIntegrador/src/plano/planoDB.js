@@ -17,12 +17,12 @@ async function deletarPlano(event,PlanoId){
 async function alterarPlano(event, Planoid, nome, valor) {
     event =''
     const resultado2 = await db.query(`UPDATE "GymControl".Planos
- 
-    WHERE id = $7;`, [ nome, valor,Planoid]);
+        set nome = $1, valor= $2 where id = $3
+        `, [ nome, valor,Planoid]);
     return resultado2.rows; 
 
 }
-async function salvarPlano(event, Planoid, nome, valor){
+async function salvarPlano(event, nome, valor){
     event = ''
     const resultado = await db.query('INSERT INTO"GymControl".Planos(nome, valor)VALUES ($1, $2);', [nome, valor]);
     return resultado.rows;

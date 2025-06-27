@@ -4,16 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="agendamento.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/libs/choices/choices.min.css" />
     <title>Lista de Agendamentos</title>
+    
+    <!-- CSS da página -->
+    <link href="agendamento.css" type="text/css" rel="stylesheet">
+    
+    <!-- CSS da biblioteca Choices.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
+    <!-- Biblioteca de ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
     <div class="controls-container">
-        <!-- Ícones definidos diretamente no HTML -->
         <button id="btn-limparFiltro" title="Limpar Filtro"><i data-lucide="rotate-cw"></i></button>
-        <select id="filtro" aria-placeholder="Filtrar os tipos de agendamentos">
+        <select id="filtro">
             <option value="0">Todos os tipos</option>
             <option value="Aula de Musculação">Aula de Musculação</option>
             <option value="Consulta Nutricional">Consulta Nutricional</option>
@@ -32,30 +38,52 @@
         <tbody id="AgendamentosTableDados"></tbody>
     </table>
 
-    <div id="modal">  
-         <button id='btn-limparDados' title="Limpar dados do formulário"><i data-lucide="brush"></i></button>
+    <div id="modal"> 
+        <button id='btn-limparDados' title="Limpar dados do formulário"><i data-lucide="brush"></i></button>
         <h3>Edite os dados do Agendamento:</h3>
      
-        <label>ID: <input type="text" id="Agendamento-id" readonly /></label><br>
-        <label for="cliente-nome">Cliente:</label>
-        <select id="cliente-nome"></select><br>
-        <label for="funcionario-nome">Funcionário:</label>
-        <select id="funcionario-nome"></select><br>
-        <label for="data">Data:</label>
-        <div class="date-input-wrapper"><input id="data" type="date"></div><br>
-        <label for="tipo">Tipo:</label>
-        <select id="tipo" placeholder="Tipo">
-            <option value="Aula de Musculação">Aula de Musculação</option>
-            <option value="Consulta Nutricional">Consulta Nutricional</option>
-            <option value="Avaliação Física">Avaliação Física</option>
-            <option value="Aula de Zumba">Aula de Zumba</option>
-        </select><br>
-        <button id="btn-salvar"><i data-lucide="save"></i></button>
-        <button id="btn-excluir"><i data-lucide="trash-2"></i></button>
+        <div class="form-group">
+            <label>ID:</label>
+            <input type="text" id="Agendamento-id" readonly />
+        </div>
+        
+        <div class="form-group">
+            <label for="cliente-nome">Cliente:</label>
+            <select id="cliente-nome"></select>
+        </div>
+        
+        <div class="form-group">
+            <label for="funcionario-nome">Funcionário:</label>
+            <select id="funcionario-nome"></select>
+        </div>
+        
+        <div class="form-group">
+            <label for="data">Data:</label>
+            <input id="data" type="date">
+        </div>
+        
+        <div class="form-group">
+            <label for="tipo">Tipo:</label>
+            <select id="tipo">
+                <option value="Aula de Musculação">Aula de Musculação</option>
+                <option value="Consulta Nutricional">Consulta Nutricional</option>
+                <option value="Avaliação Física">Avaliação Física</option>
+                <option value="Aula de Zumba">Aula de Zumba</option>
+            </select>
+        </div>
+
+        <div class="action-buttons-wrapper">
+            <button id="btn-excluir"><i data-lucide="trash-2"></i> Excluir</button>
+            <button id="btn-salvar"><i data-lucide="save"></i> Salvar</button>
+        </div>
     </div>
 
+    <!-- Scripts no final para melhor performance -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="../assets/libs/choices/choices.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
     <script src="agendamento.js"></script>
 </body>
 

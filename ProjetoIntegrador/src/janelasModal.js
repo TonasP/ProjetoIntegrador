@@ -38,8 +38,48 @@ function modalAbrirClientes(){
         console.warn("Não foi possivel abrir a modal : Janela Principal")
     }
 }
+function modalAbrirFuncionarios(){
+    let mainWindow= getJanelaPrincipal();
+    if (mainWindow){
+        criarJanelaModal(mainWindow, './src/funcionario/funcionario.html')
+    }
+    else{
+        console.warn("Não foi possivel abrir a modal : Janela Principal")
+    }
+}
+function modalAbrirPlanos(){
+    let mainWindow= getJanelaPrincipal();
+    if (mainWindow){
+        criarJanelaModal(mainWindow, './src/plano/plano.html')
+    }
+    else{
+        console.warn("Não foi possivel abrir a modal : Janela Principal")
+    }
+}
+function modalAbrirServicos(){
+    let mainWindow= getJanelaPrincipal();
+    if (mainWindow){
+        criarJanelaModal(mainWindow, './src/servico/servico.html')
+    }
+    else{
+        console.warn("Não foi possivel abrir a modal : Janela Principal")
+    }
+}
+function modalAbrirPagamentos(){
+    let mainWindow= getJanelaPrincipal();
+    if (mainWindow){
+        criarJanelaModal(mainWindow, './src/pagamentos/pagamentos.html')
+    }
+    else{
+        console.warn("Não foi possivel abrir a modal : Janela Principal")
+    }
+}
 module.exports= {
     criarJanelaModal,
     modalAbrirAgendamentos,
     modalAbrirClientes,
+    modalAbrirFuncionarios,
+    modalAbrirPlanos,
+    modalAbrirServicos,
+    modalAbrirPagamentos,
 }

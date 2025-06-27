@@ -138,6 +138,18 @@ function abrirAgendamento(){
 function abrirCliente(){
     ipcRenderer.send('abrir-cliente')
 }
+function abrirFuncionario(){
+    ipcRenderer.send('abrir-funcionario')
+}
+function abrirPlano(){
+    ipcRenderer.send('abrir-plano')
+}
+function abrirServico(){
+    ipcRenderer.send('abrir-servico')
+}
+function abrirPagamento(){
+    ipcRenderer.send('abrir-pagamentos')
+}
 function abrirMenuPrincipal(){
     ipcRenderer.send('abrir-menu-principal')
 }
@@ -153,9 +165,13 @@ function voltarJanelaLogin(){
 contextBridge.exposeInMainWorld('janelaGymAPI',
     {
         
-        abrirAgendamento: abrirAgendamento,
-        abrirCliente:abrirCliente,
-        abrirMenuPrincipal: abrirMenuPrincipal,
+        abrirAgendamento,
+        abrirCliente,
+        abrirFuncionario,
+        abrirPlano,
+        abrirServico,
+        abrirPagamento,
+        abrirMenuPrincipal,
         abrirMenuUser,
     //-----------------------------------------------------
         fecharLogin,

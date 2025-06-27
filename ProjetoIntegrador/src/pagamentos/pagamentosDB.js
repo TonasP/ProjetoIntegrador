@@ -3,7 +3,17 @@ const { ipcMain } = require('electron')
 
 async function buscarPagamentos() {
 
-    const resultado = await db.query('SELECT * FROM"GymControl".Pagamentos order by id')
+    const resultado = await db.query(`
+      SELECT 
+    pagamentos.id as id,
+    clientes.nome as cliente_nome,
+    servicos.tipo_servico as servico,
+    pagamentos.id_servico as id_servico,
+    pagamentos.valor_total as valor,
+    pagamentos.forma_pagamento as forma_pagamento
+FROM "GymControl".pagamentos
+JOIN "GymControl".servicos ON servicos.id = pagamentos.id_servico
+JOIN "GymControl".clientes ON clientes.id = servicos.id_cliente;`)
 
     return resultado.rows;
 }
@@ -16,7 +26,7 @@ async function deletarPagamento(event,PagamentoId){
 }
 async function alterarPagamento(event, Pagamentoid, id_servico, valor_total, forma_pagamento) {
     event =''
-    const resultado2 = await db.query(`UPDATE "GymControl".Pagamentos
+    const resultado2 = await db.query(`UPDATE "GymControl".Pagamentos set
     id_servico = $1, valor_total =$2, forma_pagamento
     WHERE id = $4;`, [id_servico, valor_total, forma_pagamento, Pagamentoid]);
     return resultado2.rows;

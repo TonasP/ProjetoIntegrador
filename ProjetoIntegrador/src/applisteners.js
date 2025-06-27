@@ -60,6 +60,10 @@ function registrarServicoHandler() {
 function registrarJanelas() {
     ipcMain.on('abrir-agendamento', janelas.modalAbrirAgendamentos)
     ipcMain.on('abrir-cliente', janelas.modalAbrirClientes)
+    ipcMain.on('abrir-funcionario', janelas.modalAbrirFuncionarios)
+    ipcMain.on('abrir-plano', janelas.modalAbrirPlanos)
+    ipcMain.on('abrir-servico', janelas.modalAbrirServicos)
+    ipcMain.on('abrir-pagamentos', janelas.modalAbrirPagamentos)
     ipcMain.on('abrir-menu-principal', createMainWindow)
     ipcMain.on('abrir-janela-user', janelaPrincipal.createMainWindowUser)
     ipcMain.on('voltar-janela-login',janelaPrincipal.getJanelaLogin)    

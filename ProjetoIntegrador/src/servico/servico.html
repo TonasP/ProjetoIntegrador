@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <!-- >>> ALTERAÇÃO IMPORTANTE: CSP Atualizada <<< -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Servicos</title>
+    
+    <!-- CSS da página -->
+    <link href='servico.css' type="text/css" rel="stylesheet">
+    
+    <!-- CSS da biblioteca Choices.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
+    <!-- Biblioteca de ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <table id="servicosTable">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Funcionário</th>
+                <th>Serviço</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="servicoTableDados">
+        </tbody>
+    </table>
+
+    <div id="modal">
+        <h3>Edite os dados do serviço:</h3>
+        <button id='btn-limpar'>
+            <i data-lucide="eraser"></i>
+        </button>
+        
+        <label>ID: <input type="text" id="servico-id" readonly /></label>
+        
+        <label>Cliente:
+            <select id="servico-cliente"></select>
+        </label>
+        
+        <label>Funcionário:
+            <select id="servico-funcionario"></select>
+        </label>
+        
+        <label>Serviço:
+            <select id="servico-tipo">
+                <option>Aula de Musculação</option>
+                <option>Consulta Nutricional</option>
+                <option>Treino Personalizado</option>
+                <option>Avaliação Fisica</option>
+                <option>Assinatura de Plano</option>
+            </select>
+        </label>
+        
+        <label>Data: <input type="date" id="servico-data"></label>
+        
+        <div class="action-buttons">
+            <button id="btn-excluir"><i data-lucide="trash-2"></i> Excluir</button>
+            <button id="btn-salvar"><i data-lucide="save-all"></i> Salvar</button>
+        </div>
+    </div>
+
+    <!-- JS da biblioteca Choices.js -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Seu script de funcionalidades -->
+    <script src="servico.js"></script>
+    <script>
+        // Garante que os ícones sejam renderizados
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

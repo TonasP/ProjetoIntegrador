@@ -15,7 +15,7 @@ const botaoLimpar = document.getElementById('btn-limpar');
 botaoLimpar.addEventListener('click', limparDados);
 botaoSalvar.addEventListener('click', funcaoSalvar)
 botaoExcluir.addEventListener('click', excluirCliente)
-const validacaoPerfil = localStorage.get('perfil')
+const validacaoPerfil = localStorage.getItem('perfil')
 
 if (validacaoPerfil === 'user'){
     botaoExcluir.disable

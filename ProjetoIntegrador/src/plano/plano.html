@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link para o novo arquivo CSS -->
+    <link href='plano.css' type="text/css" rel="stylesheet">
+    <title>Gerenciamento de Planos</title>
+    <!-- Biblioteca de ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Tabela para listar os planos -->
+    <table id="planosTable">
+        <thead>
+            <tr>
+                <th>Nome do Plano</th>
+                <th>Valor</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody id="planoTableDados">
+            <!-- As linhas dos planos serão inseridas aqui pelo JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- Modal para editar e criar planos -->
+    <div id="modal">
+        <h3>Edite os Dados do Plano:</h3>
+        
+        <!-- Botão de Limpar no canto -->
+        <button id='btn-limpar'>
+            <i data-lucide="eraser"></i>
+        </button>
+        
+        <!-- Campos do Formulário -->
+        <label>ID: <input type="text" id="plano-id" readonly /></label>
+        
+        <label>Nome do Plano: <input type="text" id="plano-nome"></label>
+        
+        <label>Valor (ex: 99.90): <input type="number" id="plano-valor" step="0.01" placeholder="99.90"></label>
+        
+        <!-- Botões de Ação -->
+        <div class="action-buttons">
+            <button id="btn-excluir">
+                <i data-lucide="trash-2"></i> Excluir
+            </button>
+            <button id="btn-salvar">
+                <i data-lucide="save-all"></i> Salvar
+            </button>
+        </div>
+    </div>
+
+    <!-- Link para o script de funcionalidades -->
+    <script src="plano.js"></script>
+</body>
+
+</html>

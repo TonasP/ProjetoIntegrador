@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Pagamentos</title>
+    <link href='pagamentos.css' type="text/css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <table id="pagamentosTable">
+        <thead>
+            <tr>
+                <!-- >>> NOVA COLUNA <<< -->
+                <th>Cliente</th>
+                <th>Serviço Prestado</th>
+                <th>Valor Total</th>
+                <th>Forma de Pagamento</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody id="pagamentoTableDados">
+            <!-- Linhas de pagamento serão inseridas aqui via JS -->
+        </tbody>
+    </table>
+
+    <div id="modal">
+        <h3>Lançar / Editar Pagamento</h3>
+        <button id='btn-limpar'>
+            <i data-lucide="eraser"></i>
+        </button>
+        
+        <label>ID: <input type="text" id="pagamento-id" readonly /></label>
+        
+        <label>Serviço a Pagar:
+            <select id="pagamento-servico"></select>
+        </label>
+        
+        <label>Valor Total (R$):
+            <!-- >>> CAMPO AGORA É READONLY (BLOQUEADO) <<< -->
+            <input type="number" id="pagamento-valor" step="0.01" placeholder="0.00" readonly />
+        </label>
+        
+        <label>Forma de Pagamento:
+            <select id="pagamento-forma">
+                <option>Cartão de Crédito</option>
+                <option>Cartão de Débito</option>
+                <option>PIX</option>
+                <option>Dinheiro</option>
+            </select>
+        </label>
+
+        <div class="action-buttons">
+            <button id="btn-excluir"><i data-lucide="trash-2"></i> Excluir</button>
+            <button id="btn-salvar"><i data-lucide="save-all"></i> Confirmar</button>
+        </div>
+    </div>
+
+    <script src="pagamentos.js"></script>
+</body>
+</html>

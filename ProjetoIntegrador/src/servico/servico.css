@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GymControl - Estilo do Painel de Agendamentos (Padrão Unificado)
+   GymControl - Estilo do Painel de Serviços
    ========================================================================== */
 
 /* --- Variáveis e Configurações Globais --- */
@@ -35,55 +35,8 @@ body {
     align-items: center;
 }
 
-/* --- Container de Controles (Filtros, etc.) --- */
-.controls-container {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 1200px;
-    padding: 10px;
-    background-color: var(--bg-ui-element);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--border-color);
-}
-
-.controls-container button {
-    background: none;
-    border: 2px solid var(--accent-electric-blue);
-    color: var(--accent-electric-blue);
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.controls-container button:hover {
-    background-color: var(--accent-electric-blue);
-    color: white;
-}
-
-.controls-container #filtro {
-    flex-grow: 1;
-    background-color: var(--bg-deep-space);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-    padding: 10px;
-    border-radius: 5px;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a0b2c9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-}
-
-
-/* --- Tabela Principal --- */
-#AgendamentoTable { /* <<< ADAPTADO */
+/* --- Tabela de Serviços --- */
+#servicosTable {
     width: 100%;
     max-width: 1200px; 
     border-collapse: collapse;
@@ -95,11 +48,11 @@ body {
     margin-bottom: 2rem; 
 }
 
-#AgendamentoTable thead tr { /* <<< ADAPTADO */
+#servicosTable thead tr {
     background-color: var(--border-color);
 }
 
-#AgendamentoTable th { /* <<< ADAPTADO */
+#servicosTable th {
     padding: 1rem 1.5rem;
     text-align: left;
     font-size: 0.9rem;
@@ -110,38 +63,38 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-#AgendamentoTable tbody tr { /* <<< ADAPTADO */
+#servicosTable tbody tr {
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#AgendamentoTable tbody tr:last-child { /* <<< ADAPTADO */
+#servicosTable tbody tr:last-child {
     border-bottom: none;
 }
 
-#AgendamentoTable tbody tr:nth-child(even) { /* <<< ADAPTADO */
+#servicosTable tbody tr:nth-child(even) {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-#AgendamentoTable tbody tr:hover { /* <<< ADAPTADO */
+#servicosTable tbody tr:hover {
     background-color: var(--bg-ui-hover);
     transform: scale(1.015);
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-#AgendamentoTable td { /* <<< ADAPTADO */
+#servicosTable td {
     padding: 1rem 1.5rem;
     color: var(--text-secondary);
     vertical-align: middle;
 }
 
-#AgendamentoTable td:first-child { /* <<< ADAPTADO */
+#servicosTable td:first-child {
     color: var(--text-primary);
     font-weight: 500;
 }
 
-#AgendamentoTable td button { /* <<< ADAPTADO */
+#servicosTable td button {
     background: transparent;
     border: none;
     cursor: pointer;
@@ -152,10 +105,11 @@ body {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-#AgendamentoTable td button:hover { /* <<< ADAPTADO */
+#servicosTable td button:hover {
     color: #fff;
     transform: scale(1.2);
 }
+
 
 /* --- Modal de Edição --- */
 #modal {
@@ -171,6 +125,11 @@ body {
     flex-direction: column;
     gap: 1rem;
 }
+
+#modal br {
+    display: none;
+}
+
 
 #modal h3 {
     color: var(--accent-electric-blue);
@@ -190,8 +149,9 @@ body {
 
 /* Estilo base para todos os inputs e selects */
 #modal input[type="text"],
+#modal input[type="email"],
 #modal input[type="date"],
-#modal #tipo { 
+#modal #servico-tipo { /* Estilo para o select de serviço */
     width: 100%;
     padding: 0.8rem 1rem;
     margin-top: 0.5rem;
@@ -203,7 +163,7 @@ body {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-#modal #tipo {
+#modal #servico-tipo {
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a0b2c9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -219,12 +179,12 @@ body {
 }
 
 #modal input[readonly] {
-    background-color: #2a3a52;
+    background-color: #2a3952;
     cursor: not-allowed;
     opacity: 0.7;
 }
 
-/* --- Estilização para Dropdowns Choices.js --- */
+/* --- Estilização para Dropdowns Choices.js (COM MAIOR ESPECIFICIDADE) --- */
 #modal .choices {
     margin-top: 0.5rem;
 }
@@ -253,6 +213,11 @@ body {
     margin-top: 4px;
 }
 
+#modal .choices__item--choice {
+    padding: 0.8rem 1rem;
+    color: var(--text-secondary);
+}
+
 #modal .choices__item--choice.is-highlighted {
     background-color: var(--bg-ui-hover);
     color: var(--text-primary);
@@ -277,7 +242,7 @@ body {
 
 
 /* --- Botões do Modal --- */
-.action-buttons-wrapper {
+.action-buttons {
     display: flex;
     gap: 1rem;
     margin-top: 1.5rem;
@@ -333,7 +298,7 @@ body {
     border-color: var(--accent-danger-red);
 }
 
-#btn-limparDados { /* <<< ADAPTADO */
+#btn-limpar {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -350,7 +315,7 @@ body {
     transition: all 0.3s ease;
 }
 
-#btn-limparDados:hover { /* <<< ADAPTADO */
+#btn-limpar:hover {
     border-color: var(--accent-electric-blue);
     color: var(--accent-electric-blue);
     transform: scale(1.15); 
@@ -362,4 +327,8 @@ body {
     width: 20px;
     height: 20px;
     stroke-width: 2.5;
+}
+
+icon {
+    display: none;
 }
