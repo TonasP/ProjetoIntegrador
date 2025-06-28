@@ -216,7 +216,7 @@ body {
     box-shadow: 0 4px 20px var(--accent-glow-red);
 }
 
-#btn-excluir:disabled {
+#btn-excluir:disabled, #btn-salvar:disabled {
     opacity: 0.4;
     cursor: not-allowed;
     transform: none;

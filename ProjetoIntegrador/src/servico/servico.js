@@ -30,6 +30,10 @@ if (validacaoPerfil === 'user') {
     botaoExcluir.style.opacity = '0.4';
     botaoExcluir.style.cursor = 'not-allowed';
     botaoExcluir.title = "Você não tem permissão para excluir.";
+    botaoSalvar.disabled = true;
+    botaoSalvar.style.opacity = '0.4';
+    botaoSalvar.style.cursor = 'not-allowed';
+    botaoSalvar.title = "Você não tem permissão para alterar.";
 }
 
 // --- Funções do Modal ---
@@ -77,12 +81,12 @@ async function funcaoSalvar() {
         return;
     }
 
-    const dadosServico = { id, clienteId, funcionarioId, tipoServico, dataServico };
+
 
     if (id) {
-        await window.GymAPI.alterarServico(dadosServico);
+        await window.GymAPI.alterarServico( id, clienteId, funcionarioId, tipoServico, dataServico);
     } else {
-        await window.GymAPI.salvarServico(dadosServico);
+        await window.GymAPI.salvarServico(funcionarioId ,clienteId, tipoServico, dataServico );
     }
 
     await carregarServicos();

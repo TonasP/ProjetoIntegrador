@@ -19,6 +19,7 @@ botaoLimpar.addEventListener('click', limparDados);
 const validacaoPerfil = localStorage.getItem('perfil');
 if (validacaoPerfil === 'user') {
     botaoExcluir.disabled = true;
+    botaoSalvar.disabled = true
 }
 
 // --- Funções ---

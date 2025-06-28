@@ -27,7 +27,7 @@ async function deletarServico(event, ServicoId) {
 }
 async function alterarServico(event, Servicoid, id_funcionario, id_cliente, tipo_servico, data_servico) {
     event = ''
-    const resultado2 = await db.query(`UPDATE "GymControl".Servicos
+    const resultado2 = await db.query(`UPDATE "GymControl".Servicos set 
     id_funcionario = $1, id_cliente =$2, tipo_servico =$3, data_servico=$4
     WHERE id = $5;`, [id_funcionario, id_cliente, tipo_servico, data_servico, Servicoid]);
     return resultado2.rows;
@@ -35,7 +35,7 @@ async function alterarServico(event, Servicoid, id_funcionario, id_cliente, tipo
 }
 async function salvarServico(event, id_funcionario, id_cliente, tipo_servico, data_servico) {
     event = ''
-    const resultado = await db.query('INSERT INTO"GymControl".Servicos(id_funcionario, id_cliente, tipo_servico, data_servico)VALUES ($1, $2, $3, $4, $5, $6);', [id_funcionario, id_cliente, tipo_servico, data_servico]);
+    const resultado = await db.query('INSERT INTO"GymControl".Servicos(id_funcionario, id_cliente, tipo_servico, data_servico)VALUES ($1, $2, $3, $4);', [id_funcionario, id_cliente, tipo_servico, data_servico]);
     return resultado.rows;
 }
 

@@ -215,5 +215,9 @@ function verificarPermissoes() {
         botaoExcluir.style.opacity = '0.4';
         botaoExcluir.style.cursor = 'not-allowed';
         botaoExcluir.title = "Você não tem permissão para excluir.";
+        botaoSalvar.disabled = true;
+        botaoSalvar.style.opacity = '0.4';
+        botaoSalvar.style.cursor = 'not-allowed';
+        botaoSalvar.title = "Você não tem permissão para excluir.";
     }
 }

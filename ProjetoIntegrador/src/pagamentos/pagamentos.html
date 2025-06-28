@@ -2,17 +2,26 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    
+    <!-- >>> ALTERAÇÃO IMPORTANTE: CSP Atualizada e Completa <<< -->
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self'; 
+                   script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net https://www.gstatic.com; 
+                   style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+                   connect-src 'self' https://firestore.googleapis.com;
+                   img-src 'self' data: https://www.google.com;">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Pagamentos</title>
     <link href='pagamentos.css' type="text/css" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
 </head>
 <body>
 
     <table id="pagamentosTable">
         <thead>
             <tr>
-                <!-- >>> NOVA COLUNA <<< -->
                 <th>Cliente</th>
                 <th>Serviço Prestado</th>
                 <th>Valor Total</th>
@@ -20,28 +29,15 @@
                 <th>Editar</th>
             </tr>
         </thead>
-        <tbody id="pagamentoTableDados">
-            <!-- Linhas de pagamento serão inseridas aqui via JS -->
-        </tbody>
+        <tbody id="pagamentoTableDados"></tbody>
     </table>
 
     <div id="modal">
         <h3>Lançar / Editar Pagamento</h3>
-        <button id='btn-limpar'>
-            <i data-lucide="eraser"></i>
-        </button>
-        
+        <button id='btn-limpar'><i data-lucide="eraser"></i></button>
         <label>ID: <input type="text" id="pagamento-id" readonly /></label>
-        
-        <label>Serviço a Pagar:
-            <select id="pagamento-servico"></select>
-        </label>
-        
-        <label>Valor Total (R$):
-            <!-- >>> CAMPO AGORA É READONLY (BLOQUEADO) <<< -->
-            <input type="number" id="pagamento-valor" step="0.01" placeholder="0.00" readonly />
-        </label>
-        
+        <label>Serviço a Pagar: <select id="pagamento-servico"></select></label>
+        <label>Valor Total (R$): <input type="number" id="pagamento-valor" step="0.01" placeholder="0.00" readonly /></label>
         <label>Forma de Pagamento:
             <select id="pagamento-forma">
                 <option>Cartão de Crédito</option>
@@ -50,13 +46,26 @@
                 <option>Dinheiro</option>
             </select>
         </label>
-
         <div class="action-buttons">
             <button id="btn-excluir"><i data-lucide="trash-2"></i> Excluir</button>
-            <button id="btn-salvar"><i data-lucide="save-all"></i> Confirmar</button>
+            <button id="btn-salvar"><i data-lucide="save-all"></i> Salvar</button>
         </div>
     </div>
 
-    <script src="pagamentos.js"></script>
+    <div id="modal-qrcode-overlay" class="hidden">
+        <div id="modal-qrcode-content">
+            <h3>Pagamento via PIX</h3>
+            <p>Escaneie o QR Code para confirmar o pagamento na página web.</p>
+            <div id="qrcode-container"></div>
+            <p>Aguardando confirmação...</p>
+            <button id="btn-cancelar-pix">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="pagamentos.js" type="module"></script>
+    <script>
+        // Este script inline agora será permitido pela nova CSP
+        lucide.createIcons();
+    </script>
 </body>
 </html>
