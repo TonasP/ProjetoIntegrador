@@ -61,6 +61,7 @@ async function validarUsuario() {
         return
     } else {
         localStorage.setItem('perfil', validar[0].perfil)
+        localStorage.setItem('cpf', validar[0].cpf)
         window.janelaGymAPI.abrirMenuUser()
         return
 

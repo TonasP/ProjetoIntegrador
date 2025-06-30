@@ -10,6 +10,9 @@ let choicesFuncionario = null;
 // --- Inicialização ---
 document.addEventListener('DOMContentLoaded', init);
 
+const perfil = localStorage.getItem('perfil')
+const cpf = localStorage.getItem('cpf')
+
 async function init() {
     // 1. Seleção dos Elementos do DOM
     tabelaAgendamentos = document.getElementById('AgendamentosTableDados');
@@ -156,7 +159,7 @@ async function limparFiltro() {
 // --- Funções de Carregamento e Renderização ---
 async function carregarAgendamentos() {
     try {
-        const agendamentos = await window.GymAPI.buscarAgendamentos();
+        const agendamentos = await window.GymAPI.buscarAgendamentos(perfil, cpf);
         renderizarTabela(agendamentos, 'Nenhum agendamento encontrado.');
     } catch (error) {
         console.error("Erro ao carregar agendamentos:", error);
