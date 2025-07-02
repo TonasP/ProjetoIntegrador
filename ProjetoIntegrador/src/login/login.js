@@ -54,6 +54,7 @@ async function validarLogin() {
 async function validarUsuario() {
     const validar = await window.GymAPI.validarPerfil(loginInput.value, senhaInput.value)
     console.log(validar[0].perfil)
+    
     if (validar[0].perfil == 'adm') {
         localStorage.setItem('perfil', validar[0].perfil)
         localStorage.setItem('nome', validar[0].nome_cliente)

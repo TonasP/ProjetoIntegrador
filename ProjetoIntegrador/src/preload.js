@@ -1,8 +1,8 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 // --- Funções de Agendamentos ---
-function buscarAgendamentos() {
-    return ipcRenderer.invoke('buscar-agendamentos');
+function buscarAgendamentos(perfil, cpf) {
+    return ipcRenderer.invoke('buscar-agendamentos', perfil, cpf);
 }
 function deletarAgendamento(id) {
     return ipcRenderer.invoke('deletar-agendamento', id);

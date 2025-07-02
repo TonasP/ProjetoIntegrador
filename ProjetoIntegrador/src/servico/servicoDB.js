@@ -10,7 +10,8 @@ async function buscarServicos() {
         funcionarios.nome as funcionario,
         servicos.id_funcionario as funcionario_id,
         servicos.tipo_servico as servico,
-      TO_CHAR(servicos.data_servico, 'DD/MM/YYYY')  as data
+        TO_CHAR (servicos.data_servico, 'YYYY-MM-DD') as data_servico,
+        TO_CHAR(servicos.data_servico, 'DD/MM/YYYY') as data
         from "GymControl".servicos
         join "GymControl".funcionarios on funcionarios.id = servicos.id_funcionario
         join "GymControl".clientes on clientes.id = servicos.id_cliente

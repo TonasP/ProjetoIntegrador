@@ -40,7 +40,7 @@ if (validacaoPerfil === 'user') {
 function mostrarDetalhes(servico) {
     modalIdServico.value = servico.id;
     modalTipoServicoSelect.value = servico.servico;
-    modalDataServico.value = new Date(servico.data).toISOString().split('T')[0];
+    modalDataServico.value = servico.data_servico;
 
     // Define os valores nos dropdowns Choices.js
     if (choicesCliente) {
@@ -123,13 +123,12 @@ async function carregarServicos() {
 
 function criarLinhaServico(servico) {
     const linha = document.createElement("tr");
-    const dataFormatada = new Date(servico.data).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
     linha.innerHTML = `
         <td>${servico.cliente}</td>
         <td>${servico.funcionario}</td>
         <td>${servico.servico}</td>
-        <td>${dataFormatada}</td>
+        <td>${servico.data}</td>
         <td>
             <button class="edit-btn"><i data-lucide="edit"></i></button>
         </td>

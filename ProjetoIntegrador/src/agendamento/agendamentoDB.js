@@ -1,6 +1,7 @@
 const db = require('../db');
 
 async function buscarAgendamentos(event, perfil, cpf) {
+
     if (perfil === 'user') {
         const result2 = await db.query(`
         SELECT 
@@ -15,8 +16,10 @@ async function buscarAgendamentos(event, perfil, cpf) {
         FROM "GymControl".agendamentos 
         JOIN "GymControl".clientes ON clientes.id = agendamentos.id_cliente
         JOIN "GymControl".funcionarios ON funcionarios.id = agendamentos.id_funcionario
-        ORDER BY agendamentos.data_marcada DESC where clientes.cpf = $1
+        where clientes.cpf = $1
+        ORDER BY agendamentos.data_marcada DESC 
     `, [cpf])
+        console.log(result2.rows)
         return result2.rows
     } else {
         const result1 = await db.query(`
